@@ -7,7 +7,6 @@ function App() {
     <>
        <Main>
        <Navbar/>
-       <div className="pt-[80px]">
         <Routes>
           <Route path="/problemset" element={<Problems />} />
           <Route path="/interview" element={<Interview />} />
@@ -15,7 +14,6 @@ function App() {
           <Route path="/ide" element={<IDE />} />
           <Route path="/register" element={<Register/>}/>
         </Routes>
-        </div>
        </Main>
     </>
   )
