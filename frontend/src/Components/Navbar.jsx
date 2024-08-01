@@ -33,6 +33,7 @@ const Navbar = () => {
           </li>
           <li><Link to='/discuss' className='hover:underline underline-offset-2 text-black mx-5'>OA Discussion</Link></li>
           <li><Link to='/ide' className='hover:underline underline-offset-2 text-black mx-5'>IDE</Link></li>
+          <li><Link to='post' className='hover:underline underline-offset-2 text-black mx-5'>Post Question</Link></li>
         </ul>
         <Link to='/register' className='rounded-lg px-4 py-2 text-black mx-5'>Register</Link>
       </div>

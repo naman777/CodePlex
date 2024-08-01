@@ -1,4 +1,4 @@
-import { Navbar, Problems, Interview, Discuss, IDE, Register } from "./Constants/import"
+import { Navbar, Problems, Interview, Discuss, IDE, Register, Post } from "./Constants/import"
 import { BrowserRouter as Main, Routes, Route } from "react-router-dom"
 
 function App() {
@@ -13,6 +13,7 @@ function App() {
           <Route path="/discuss" element={<Discuss />} />
           <Route path="/ide" element={<IDE />} />
           <Route path="/register" element={<Register/>}/>
+          <Route path="/post" element={<Post />} />
         </Routes>
        </Main>
     </>

@@ -4,3 +4,4 @@ export { default as Interview } from '../Components/Interview';
 export { default as Discuss } from '../Components/Discuss';
 export { default as Register } from '../Components/Register';
 export { default as IDE } from '../Components/IDE';
+export {default as Post} from '../Components/Post'

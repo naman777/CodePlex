@@ -3,13 +3,13 @@ import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 
 const IDE = () => {
-    const [code, setCode] = useState(`#include <iostream>\nusing namespace std;\n\nint main() { \n}`);
+    const [code, setCode] = useState(`#include <bits/stdc++.h>\nusing namespace std;\n\nint main() { \n}`);
   return (
-      <div className="container mx-auto">
+      <div className="container mx-auto px-14 py-8">
         <h1 className="text-2xl font-bold mb-4">Simple IDE</h1>
         <div className="border rounded-lg overflow-hidden mb-4">
           <Editor
-            height="50vh"
+            height="80vh"
             defaultLanguage="cpp"
             theme="vs-dark"
             defaultValue={code}
