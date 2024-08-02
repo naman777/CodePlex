@@ -40,6 +40,8 @@ model Problems {
   title     String
   description String
   tags     String[]
+  sampleTestCase String
+  sampleTestCaseAns String
   testCases String
   testCaseAns String
 }

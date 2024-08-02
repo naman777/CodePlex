@@ -14,13 +14,20 @@ export const problems = async (req:Request, res:Response) => {
 
 export const problemId = async (req:Request, res:Response) => {
     try {
-        const id = req.params.id;
+        const {id} = req.body;
         const problem = await prisma.problems.findUnique({
             where: {
                 id: parseInt(id)
             }
         });
-        res.status(200).json(problem);
+        res.status(200).json({
+            id: problem?.id,
+            title: problem?.title,
+            description: problem?.description,
+            tags:problem?.tags,
+            sampleTestCase:problem?.sampleTestCase,
+            sampleTestCaseAns:problem?.sampleTestCaseAns
+        });
     } catch (error) {
         res.status(500).json(error);
     }
@@ -28,14 +35,16 @@ export const problemId = async (req:Request, res:Response) => {
 
 export const problemsPost = async (req:Request, res:Response) => {
     try {
-        const { title, description, tags, testCases, testCaseAns } = req.body;
+        const { title, description, tags, testCases, testCaseAns, sampleTestCase, sampleTestCaseAns } = req.body;
         await prisma.problems.create({
             data: {
                 title,
                 description,
                 tags,
                 testCases,
-                testCaseAns
+                testCaseAns,
+                sampleTestCase,
+                sampleTestCaseAns
             }
         })
         res.status(201).json({ message: 'Problem created successfully'});
