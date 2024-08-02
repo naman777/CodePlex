@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef} from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -8,7 +8,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className='flex h-[50px] w-full top-0 items-center border-b-2 border-solid'>
+    <nav className='flex h-[50px] fixed w-full top-0 items-center border-b-2 border-solid'>
       <div className='flex justify-between items-center w-full max-w-[1200px] mx-auto px-6'>
         <ul className='flex items-center gap-6 p-0'>
           <li><Link to='/problemset' className='hover:underline underline-offset-2 text-black mx-5'>CodeFlex</Link></li>
@@ -35,7 +35,7 @@ const Navbar = () => {
           <li><Link to='/ide' className='hover:underline underline-offset-2 text-black mx-5'>IDE</Link></li>
           <li><Link to='post' className='hover:underline underline-offset-2 text-black mx-5'>Post Question</Link></li>
         </ul>
-        <Link to='/register' className='rounded-lg px-4 py-2 text-black mx-5'>Register</Link>
+        <Link to='/login' className='rounded-lg px-4 py-2 text-black mx-5'>Register</Link>
       </div>
     </nav>
   );
