@@ -9,8 +9,8 @@ const url = apiUrl+'/submissions';
 export const submissionHandler = async (req: Request, res: Response) => {
     const { code, languageId , problemId} = req.body;
 
-    const problem = await prisma.problems.findUnique({
-        where: { id: problemId },
+    const problem = await prisma.problems.findFirst({
+        where: { id: parseInt(problemId) },
     })
 
     if(problem){
