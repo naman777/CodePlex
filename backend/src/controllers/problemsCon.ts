@@ -28,13 +28,14 @@ export const problemId = async (req:Request, res:Response) => {
 
 export const problemsPost = async (req:Request, res:Response) => {
     try {
-        const { title, description, code, tags } = req.body;
+        const { title, description, tags, testCases, testCaseAns } = req.body;
         await prisma.problems.create({
             data: {
                 title,
                 description,
-                code,
-                tags
+                tags,
+                testCases,
+                testCaseAns
             }
         })
         res.status(201).json({ message: 'Problem created successfully'});

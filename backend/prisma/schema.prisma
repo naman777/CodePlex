@@ -39,6 +39,7 @@ model Problems {
   id        Int   @id @default(autoincrement())
   title     String
   description String
-  code String
   tags     String[]
+  testCases String
+  testCaseAns String
 }
