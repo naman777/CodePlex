@@ -2,7 +2,7 @@ import axios from "axios";
 import { Request, Response } from "express";
 
 const apiUrl = process.env.API_URL;
-const url = apiUrl+"/submissions"
+const url = apiUrl+'/submissions';
 
 export const compilerHandler = async (req:Request,res:Response) => {
 
