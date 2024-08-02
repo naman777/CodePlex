@@ -20,7 +20,7 @@ const Post = () => {
             />
           </div>
           <div className='mb-6'>
-            <input
+            <textarea
               className='w-full h-32 border border-gray-300 px-4 py-2 rounded-md focus:outline-none'
               placeholder='Enter description of problem'
               type='text'

@@ -6,3 +6,4 @@ export { default as Register } from '../Components/Register';
 export { default as IDE } from '../Components/IDE';
 export {default as Post} from '../Components/Post'
 export {default as CreateAcc} from '../Components/CreateAcc'
+export {default as AdminLogin} from '../Components/AdminLogin'
