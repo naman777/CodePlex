@@ -2,7 +2,7 @@ import axios from "axios";
 import { Request, Response } from "express";
 
 const apiUrl = process.env.API_URL;
-const url = apiUrl+'/submissions';
+const url = apiUrl+"/submissions?base64_encoded=true";
 
 export const compilerHandler = async (req:Request,res:Response) => {
 
@@ -12,7 +12,7 @@ export const compilerHandler = async (req:Request,res:Response) => {
         source_code: code,  
         language_id: languageId,
         number_of_runs: null,
-        stdin: input,  
+        stdin: input,
         expected_output: null,  
         cpu_time_limit: null,
         cpu_extra_time: null,
@@ -24,7 +24,7 @@ export const compilerHandler = async (req:Request,res:Response) => {
         enable_per_process_and_thread_memory_limit: null,
         max_file_size: null,
         enable_network: null,
-        base64_encoded: false
+        base64_encoded: true
     };
 
     try {
@@ -36,9 +36,9 @@ export const compilerHandler = async (req:Request,res:Response) => {
         let result;
         let status;
         do {
-        result = await axios.get(apiUrl+`/submissions/${token}`);
-        status = result.data.status.description;
-        } while (status === "Processing");
+            result = await axios.get(apiUrl+"/submissions/"+token);
+            status = result.data.status.description;
+        } while (status !== "Accepted");
 
         res.json({
             status,

@@ -4,7 +4,7 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 const apiUrl = process.env.API_URL;
-const url = apiUrl+'/submissions';
+const url = apiUrl+'/submissions?base64_encoded=true';
 
 export const submissionHandler = async (req: Request, res: Response) => {
     const { code, languageId , problemId} = req.body;
@@ -33,7 +33,7 @@ export const submissionHandler = async (req: Request, res: Response) => {
             enable_per_process_and_thread_memory_limit: null,
             max_file_size: null,
             enable_network: null,
-            base64_encoded: false
+            base64_encoded: true
         };
 
         try {
