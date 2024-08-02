@@ -21,7 +21,7 @@ app.use(cors());
 app.use("/api/problems", problemsRoutes);
 app.use("/api/submission", submissionRouter);
 app.use("/api/user",userRouter);
-
+app.use("/api/ide")
 
 app.listen(7777,()=>{
     console.log("Server is running on port 7777");
