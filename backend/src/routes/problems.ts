@@ -4,7 +4,7 @@ const router = express.Router();
 
 router.get("/",problems);
 router.post("/",problemsPost);
-router.get("/problemId",problemId);
+router.post("/problemId",problemId);
 
 
 export default router;

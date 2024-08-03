@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import axios from 'axios';
 
 const Problems = () => {
   const [problems, setProblems] = useState([]);
-
+  const navigate = useNavigate(); 
   useEffect(() => {
     const fetchProblems = async () => {
       try {
@@ -13,7 +13,6 @@ const Problems = () => {
  
       } catch (err) {
         setError(err);
-        
       } 
     };
 
@@ -34,7 +33,9 @@ const Problems = () => {
         <tbody className='bg-white divide-y divide-gray-200'>
           {problems.map(problem => (
             <tr key={problem.id} className='hover:bg-gray-100'>
-              <Link to='/solve-problem' className='p-4 text-sm text-gray-700'>{problem.title}</Link>
+              <div className='p-4 text-sm text-gray-700' onClick={()=>{
+                navigate(`/solve-problem/${problem.id}`);
+              }}>{problem.title}</div>
               <td className='p-4 text-sm text-gray-700'>{problem.tags.join(', ')}</td>
             </tr>
           ))}

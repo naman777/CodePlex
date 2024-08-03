@@ -10,7 +10,7 @@ function App() {
        <Navbar/>
         <Routes>
           <Route path="/" element={<Problems />} />
-          <Route path="/solve-problem" element={<SolveProblem />} />
+          <Route path="/solve-problem/:id" element={<SolveProblem />} />
           <Route path="/interview" element={<Interview />} />
           <Route path="/discuss" element={<Discuss />} />
           <Route path="/ide" element={<IDE />} />
