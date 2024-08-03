@@ -2,7 +2,7 @@ import axios from "axios";
 import { Request, Response } from "express";
 
 const apiUrl = process.env.API_URL;
-const url = apiUrl+"/submissions?base64_encoded=true";
+const url = "http://13.202.142.107:2358/submissions?base64_encoded=true";
 
 export const compilerHandler = async (req:Request,res:Response) => {
 
@@ -31,14 +31,14 @@ export const compilerHandler = async (req:Request,res:Response) => {
         const response = await axios.post(url, data);
         const token = response.data.token;
 
-        await new Promise((resolve) => setTimeout(resolve, 3000));
+        await new Promise((resolve) => setTimeout(resolve, 2000));
 
         let result;
         let status;
         do {
-            result = await axios.get(apiUrl+"/submissions/"+token);
+            result = await axios.get("http://13.202.142.107:2358"+"/submissions/"+token);
             status = result.data.status.description;
-        } while (status !== "Accepted");
+        } while (status === "Processing");
 
         res.json({
             status,
