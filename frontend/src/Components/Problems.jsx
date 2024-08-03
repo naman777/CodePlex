@@ -19,7 +19,6 @@ const Problems = () => {
     fetchProblems();
   }, []);
 
-
   return (
     <div className='w-full overflow-auto px-14 py-8'>
       <div className='mb-8 text-center font-bold text-3xl'>Problems to Solve</div>
@@ -36,7 +35,9 @@ const Problems = () => {
               <div className='p-4 text-sm text-gray-700' onClick={()=>{
                 navigate(`/solve-problem/${problem.id}`);
               }}>{problem.title}</div>
-              <td className='p-4 text-sm text-gray-700'>{problem.tags.join(', ')}</td>
+              <td className='p-4 text-sm text-gray-700' onClick={()=>{
+                navigate(`/solve-problem/${problem.id}`);
+              }}>{problem.tags.join(', ')}</td>
             </tr>
           ))}
         </tbody>

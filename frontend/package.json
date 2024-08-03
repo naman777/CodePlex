@@ -17,6 +17,7 @@
     "axios": "^1.7.3",
     "codemirror": "^5.65.17",
     "cors": "^2.8.5",
+    "js-base64": "^3.7.7",
     "lucide-react": "^0.418.0",
     "monaco-editor": "^0.44.0",
     "react": "^18.3.1",

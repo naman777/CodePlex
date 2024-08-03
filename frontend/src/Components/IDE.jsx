@@ -2,16 +2,26 @@
 import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import axios from 'axios'
+import { Base64 } from 'js-base64';
 const IDE = () => {
-    const [code, setCode] = useState(`#include <bits/stdc++.h>\n using namespace std;\n\nint main() { cout<<"hello";\n}`);
+    const [code, setCode] = useState(`#include <bits/stdc++.h>\n using namespace std;\n\nint main() { \n  cout<<"hello";\n}`);
     const [output, setOutput] = useState("");
+
     const sendData = async () => {
+  
       try {
+        const utf8Array = new TextEncoder().encode(code);
+        
+        const utf8String = String.fromCharCode.apply(null, utf8Array);
+       
+        const encodedCode = Base64.encode(utf8String);
+        console.log(encodedCode);
         const response = await axios.post("http://localhost:7777/api/ide", {
-          "code":code,
-          "languageId":"54",
+          "code":encodedCode,
+          "languageId":"54",  
           "input":null,
         });
+       
                 
         setOutput(response.data.stdout);
         
