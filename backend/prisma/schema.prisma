@@ -42,6 +42,4 @@ model Problems {
   tags     String[]
   sampleTestCase String
   sampleTestCaseAns String
-  testCases String
-  testCaseAns String
 }

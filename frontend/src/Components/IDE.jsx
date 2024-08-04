@@ -7,6 +7,8 @@ const IDE = () => {
   const [code, setCode] = useState(`#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`);
   const [output, setOutput] = useState("");
   const [language, setLanguage] = useState("cpp");
+  const [error, setError] = useState("");
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
 
   const boilerplateCodes = {
     cpp: `#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`,
@@ -28,9 +30,16 @@ const IDE = () => {
         input: null,
       });
 
+      if (response.data.error === "Something went wrong or Compilation Error") {
+        setError(response.data.error);
+        setIsErrorModalOpen(true);
+        setOutput("");
+        return;
+      }
       setOutput(response.data.stdout);
     } catch (error) {
-      console.error("Error sending data:", error);
+      setError("Something went wrong or Compilation Error");
+      setIsErrorModalOpen(true);
     }
   };
 
@@ -51,6 +60,10 @@ const IDE = () => {
     setCode(boilerplateCodes[selectedLanguage]);
   };
 
+  const closeErrorModal = () => {
+    setIsErrorModalOpen(false);
+  };
+
   return (
     <div className="container mx-auto px-14 py-8">
       <h1 className="text-2xl font-bold mb-4">Online IDE</h1>
@@ -66,6 +79,12 @@ const IDE = () => {
           <option value="java">Java</option>
           <option value="javascript">JavaScript</option>
         </select>
+        <button
+          className="bg-green-500 text-white px-4 py-2 ml-4 rounded hover:bg-green-700"
+          onClick={sendData}
+        >
+          Run
+        </button>
       </div>
       <div className="border rounded-lg overflow-hidden mb-4">
         <Editor
@@ -78,17 +97,28 @@ const IDE = () => {
         />
       </div>
       <div className="flex space-x-4 mb-4">
-        <button
-          className="bg-green-500 text-white px-4 py-2 rounded"
-          onClick={sendData}
-        >
-          Run
-        </button>
+       
       </div>
       <div className="border rounded-lg p-4 bg-white">
-        <h2 className="text-4xl font-bold mb-2">Output: {" "}</h2>
+        <h2 className="text-4xl font-bold mb-2">Output:</h2>
         <p>{output}</p>
       </div>
+
+      {/* Error Modal */}
+      {isErrorModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white rounded-lg p-6 max-w-sm mx-4">
+            <h2 className="text-xl font-bold mb-4">Error</h2>
+            <p className="mb-4">{error}</p>
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+              onClick={closeErrorModal}
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

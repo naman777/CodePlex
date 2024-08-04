@@ -14,15 +14,12 @@ export const submissionHandler = async (req: Request, res: Response) => {
     })
 
     if(problem){
-        const testCases = problem.testCases;
-        const testCaseAns = problem.testCaseAns;
-
         const data = {
             source_code: code,  
             language_id: languageId,
             number_of_runs: null,
-            stdin: testCases,  
-            expected_output: testCaseAns,  
+            stdin: null,  
+            expected_output: null,  
             cpu_time_limit: null,
             cpu_extra_time: null,
             wall_time_limit: null,
@@ -60,7 +57,7 @@ export const submissionHandler = async (req: Request, res: Response) => {
 
         } catch (error) {
             console.error(error);
-            res.status(500).json({ error: 'Something went wrong' });
+            res.status(500).json({ error: 'Something went wrong or compilation error' });
         }
     }
     else{

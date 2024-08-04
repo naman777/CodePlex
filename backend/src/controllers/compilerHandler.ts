@@ -50,7 +50,7 @@ export const compilerHandler = async (req:Request,res:Response) => {
 
     } catch (error) {
         console.error(error);
-        res.status(500).json({ error: 'Something went wrong' });
+        res.status(500).json({ error: 'Something went wrong or Compilation Error' });
     }
 
 }   

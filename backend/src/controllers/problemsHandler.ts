@@ -42,8 +42,6 @@ export const problemsPost = async (req:Request, res:Response) => {
                 title,
                 description,
                 tags,
-                testCases,
-                testCaseAns,
                 sampleTestCase,
                 sampleTestCaseAns
             }
