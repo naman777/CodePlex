@@ -40,8 +40,8 @@ const SolveProblem = () => {
           {problem.id}{". "}<span className="font-bold">{problem.title}</span>
         </div>
         <div>
-          <p className="mb-2 text-black font-bold">
-            Tags: {problem.tag}
+          <p className="mb-2 text-black font-bold"> 
+            Tags: {problem.tags.join(', ')} {" "}
           </p>
           <p className="text-lg mb-2 font-bold">Problem Description:</p>
           <p>{problem.description}</p>
