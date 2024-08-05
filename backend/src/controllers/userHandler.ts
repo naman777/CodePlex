@@ -1,6 +1,5 @@
 import { Request, Response } from "express";
 import { PrismaClient } from '@prisma/client';
-import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
@@ -17,12 +16,11 @@ export const signup = async (req:Request,res:Response) => {
     if(existingUser){
         return res.status(409).json({"error":"Email already exists"});
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await prisma.user.create({
         data:{
             name,
             email,
-            password:hashedPassword
+            password
         }
     })
 
@@ -43,11 +41,10 @@ export const signup = async (req:Request,res:Response) => {
 
 export const login = async (req:Request,res:Response) => {
     const { email, password } = req.body;
-    const hashedPassword = await bcrypt.hash(password, 10);
     const user = await prisma.user.findUnique({
         where:{
             email,
-            password:hashedPassword
+            password
         }
     })
 
