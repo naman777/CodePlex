@@ -24,7 +24,7 @@ const IDE = () => {
       const utf8String = String.fromCharCode.apply(null, utf8Array);
       const encodedCode = Base64.encode(utf8String);
 
-      const response = await axios.post("http://localhost:7777/api/ide", {
+      const response = await axios.post("https://codeplex.onrender.com/api/ide", {
         code: encodedCode,
         languageId: getLanguageId(language),
         input: null,

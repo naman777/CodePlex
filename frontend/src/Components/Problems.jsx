@@ -4,11 +4,12 @@ import axios from 'axios';
 
 const Problems = () => {
   const [problems, setProblems] = useState([]);
+  const [error, setError] = useState('');
   const navigate = useNavigate(); 
   useEffect(() => {
     const fetchProblems = async () => {
       try {
-        const response = await axios.get('http://localhost:7777/api/problems'); 
+        const response = await axios.get('https://codeplex.onrender.com/api/problems'); 
         setProblems(response.data);
  
       } catch (err) {

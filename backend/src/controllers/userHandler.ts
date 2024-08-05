@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 import jwt from "jsonwebtoken";
 
 const prisma = new PrismaClient();
-const SECRET_KEY = process.env.JWT_SECRET_KEY!;
+const SECRET_KEY = "Codeplex@codeplex.in";
 
 export const signup = async (req:Request,res:Response) => {
     const { name, email, password } = req.body;

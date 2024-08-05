@@ -21,7 +21,7 @@ const SolveProblem = () => {
   useEffect(() => {
     const fetchProblem = async () => {
       try {
-        const response = await axios.post(`http://localhost:7777/api/problems/problemId`, {
+        const response = await axios.post(`https://codeplex.onrender.com/api/problems/problemId`, {
           id: id
         });
         setProblem(response.data);

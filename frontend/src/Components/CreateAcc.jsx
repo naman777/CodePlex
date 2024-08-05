@@ -15,7 +15,7 @@ const CreateAcc = () => {
     e.preventDefault(); 
     try {
 
-      const response = await axios.post('http://localhost:7777/api/user/signup', {
+      const response = await axios.post('https://codeplex.onrender.com/api/user/signup', {
         name,
         email,
         password,

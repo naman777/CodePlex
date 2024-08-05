@@ -12,7 +12,7 @@ const Login = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post("http://localhost:7777/api/user/login", {
+            const response = await axios.post("https://codeplex.onrender.com/api/user/login", {
                 email,
                 password,
             }, {
