@@ -36,7 +36,7 @@ export const problemId = async (req:Request, res:Response) => {
 
 export const problemsPost = async (req:Request, res:Response) => {
     try {
-        const { title, description, tags, testCases, testCaseAns, sampleTestCase, sampleTestCaseAns } = req.body;
+        const { title, description, tags, sampleTestCase, sampleTestCaseAns } = req.body;
         await prisma.problems.create({
             data: {
                 title,
