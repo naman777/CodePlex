@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import axios from 'axios';
 import { Base64 } from 'js-base64';
-import {Spinner} from './Loader';
+import { Spinner } from '../component/Loader';
 
 const IDE = () => {
   const [code, setCode] = useState(`#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`);

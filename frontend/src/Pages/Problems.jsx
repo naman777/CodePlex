@@ -1,23 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import {Link, useNavigate} from 'react-router-dom'
+import { useNavigate} from 'react-router-dom'
 import axios from 'axios';
+import { Spinner } from '../component/Loader';
 
 const Problems = () => {
   const [problems, setProblems] = useState([]);
-  const [error, setError] = useState('');
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     if (!localStorage.getItem('firstVisit')) {
       localStorage.setItem('firstVisit', 'true');
       window.location.reload();
     }
     const fetchProblems = async () => {
+      setIsLoading(true);
       try {
         const response = await axios.get('https://codeplex.onrender.com/api/problems'); 
         setProblems(response.data);
+        setIsLoading(false);
  
       } catch (err) {
-        setError(err);
+        console.error('Error fetching problems', err);
       } 
     };
 
@@ -47,6 +50,9 @@ const Problems = () => {
           ))}
         </tbody>
       </table>
+      {isLoading && (<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <Spinner />
+    </div>)}
     </div>
   );
 }

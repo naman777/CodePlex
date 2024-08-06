@@ -3,7 +3,7 @@ import Editor from "@monaco-editor/react";
 import { Code } from "lucide-react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import { Spinner } from "./Loader";
+import { Spinner } from "../component/Loader";
 
 const SolveProblem = () => {
   const [code, setCode] = useState(`#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`);
