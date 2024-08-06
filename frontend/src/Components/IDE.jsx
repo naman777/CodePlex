@@ -9,6 +9,7 @@ const IDE = () => {
   const [language, setLanguage] = useState("cpp");
   const [error, setError] = useState("");
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [userInput, setUserInput] = useState("");
 
   const boilerplateCodes = {
     cpp: `#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`,
@@ -27,7 +28,7 @@ const IDE = () => {
       const response = await axios.post("https://codeplex.onrender.com/api/ide", {
         code: encodedCode,
         languageId: getLanguageId(language),
-        input: null,
+        input: null || userInput, 
       });
 
       if (response.data.error === "Something went wrong or Compilation Error") {
@@ -96,15 +97,19 @@ const IDE = () => {
           options={{ fontSize: 20 }}
         />
       </div>
-      <div className="flex space-x-4 mb-4">
-       
+      <div className="border rounded-lg p-4 bg-white mb-3">
+        <input
+          className="w-full p-2 border rounded"
+          placeholder='Input'
+          value={userInput}
+          onChange={(e) => setUserInput(e.target.value)}
+        />
       </div>
       <div className="border rounded-lg p-4 bg-white">
         <h2 className="text-4xl font-bold mb-2">Output:</h2>
         <p>{output}</p>
       </div>
 
-      {/* Error Modal */}
       {isErrorModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white rounded-lg p-6 max-w-sm mx-4">

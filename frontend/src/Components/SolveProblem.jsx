@@ -41,7 +41,7 @@ const SolveProblem = () => {
         </div>
         <div>
           <p className="mb-2 text-black font-bold"> 
-            Tags: {problem.tags.join(', ')} {" "}
+            Tags: {problem.tags} {" "}
           </p>
           <p className="text-lg mb-2 font-bold">Problem Description:</p>
           <p>{problem.description}</p>
