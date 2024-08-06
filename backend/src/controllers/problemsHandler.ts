@@ -3,14 +3,21 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-export const problems = async (req:Request, res:Response) => {
+export const problems = async (req: Request, res: Response) => {
     try {
-        const problems = await prisma.problems.findMany();
+        const problems = await prisma.problems.findMany({
+            select: {
+                title: true,
+                tags: true,
+                id: true
+            }
+        });
         res.status(200).json(problems);
     } catch (error) {
         res.status(500).json(error);
     }
 }
+
 
 export const problemId = async (req:Request, res:Response) => {
     try {
