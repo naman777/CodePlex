@@ -6,7 +6,7 @@ function App() {
   return (
     <>
        <Main>
-        <div className="pt-[50px]">
+        <div className="pt-[50px] bg-slate-900">
        <Navbar/>
         <Routes>
           <Route path="/" element={<Problems />} />

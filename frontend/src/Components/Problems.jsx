@@ -25,13 +25,13 @@ const Problems = () => {
   }, []);
 
   return (
-    <div className='w-full overflow-auto px-14 py-8'>
-      <div className='mb-8 text-center font-bold text-3xl'>Problems to Solve</div>
-      <table className='w-full table-auto border-collapse px-4 py-4'>
-        <thead className='bg-gray-800 text-white'>
+    <div className='w-full h-screen overflow-auto px-14 py-8'>
+      <div className='mb-8 text-center font-bold text-3xl text-white'>Problems to Solve</div>
+      <table className='w-full table-auto border-collapse px-4 py-4 '>
+        <thead className='bg-slate-600 text-white'>
           <tr>
-            <th className='p-4 text-sm font-semibold tracking-wide text-left border-b border-gray-200'>Title</th>
-            <th className='p-4 text-sm font-semibold tracking-wide text-left border-b border-gray-200'>Tags</th>
+            <th className='p-4 text-sm font-semibold tracking-wide text-left border-b border-gray-200 font-extrabold text-xl'>Title</th>
+            <th className='p-4 text-sm font-semibold tracking-wide text-left border-b border-gray-200 font-extrabold text-xl'>Topics</th>
           </tr>
         </thead>
         <tbody className='bg-white divide-y divide-gray-200'>

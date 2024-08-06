@@ -31,7 +31,7 @@ export const compilerHandler = async (req:Request,res:Response) => {
         const response = await axios.post(url, data);
         const token = response.data.token;
 
-        await new Promise((resolve) => setTimeout(resolve, 2000));
+        await new Promise((resolve) => setTimeout(resolve, 1000));
 
         let result;
         let status;

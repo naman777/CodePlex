@@ -2,13 +2,17 @@ import React, { useState } from 'react';
 import Editor from '@monaco-editor/react';
 import axios from 'axios';
 import { Base64 } from 'js-base64';
+import {Spinner} from './Loader';
 
 const IDE = () => {
   const [code, setCode] = useState(`#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`);
   const [output, setOutput] = useState("");
+  const [input, setInput] = useState("");
   const [language, setLanguage] = useState("cpp");
   const [error, setError] = useState("");
   const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   const boilerplateCodes = {
     cpp: `#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`,
@@ -19,16 +23,22 @@ const IDE = () => {
   };
 
   const sendData = async () => {
+    setIsLoading(true);
     try {
       const utf8Array = new TextEncoder().encode(code);
       const utf8String = String.fromCharCode.apply(null, utf8Array);
       const encodedCode = Base64.encode(utf8String);
 
+      const utf8ArrayInput = new TextEncoder().encode(input);
+      const utf8StringInput = String.fromCharCode.apply(null, utf8ArrayInput);
+      const encodedInput = Base64.encode(utf8StringInput);
+
       const response = await axios.post("https://codeplex.onrender.com/api/ide", {
         code: encodedCode,
         languageId: getLanguageId(language),
-        input: null,
+        input: encodedInput,
       });
+      setIsLoading(false);
 
       if (response.data.error === "Something went wrong or Compilation Error") {
         setError(response.data.error);
@@ -65,11 +75,10 @@ const IDE = () => {
   };
 
   return (
-    <div className="container mx-auto px-14 py-8">
-      <h1 className="text-2xl font-bold mb-4">Online IDE</h1>
+    <div className="container mx-auto px-5 py-4 bg-slate-900 h-screen">
       <div className="mb-4">
         <select
-          className="border rounded-lg px-4 py-2"
+          className="border rounded-lg px-4  py-2 "
           value={language}
           onChange={handleLanguageChange}
         >
@@ -86,25 +95,35 @@ const IDE = () => {
           Run
         </button>
       </div>
-      <div className="border rounded-lg overflow-hidden mb-4">
-        <Editor
-          height="70vh"
-          defaultLanguage={language}
-          theme="vs-dark"
-          value={code}
-          onChange={(value) => setCode(value)}
-          options={{ fontSize: 20 }}
-        />
+      <div className="grid grid-cols-3 gap-4">
+        <div className="border rounded-lg overflow-hidden col-span-2">
+          <Editor
+            height="70vh"
+            defaultLanguage={language}
+            theme="vs-dark"
+            value={code}
+            onChange={(value) => setCode(value)}
+            options={{ fontSize: 20 }}
+          />
+        </div>
+      <div className="flex flex-col space-y-4 col-span-1">
+        <div className="border rounded-lg p-4 bg-white">
+          <h2 className="text-4xl font-bold mb-2 ">Input:</h2>
+          <textarea
+            className="w-full h-20 border rounded-lg p-2"
+            placeholder="Enter input here"
+            onChange={(e)=>{
+              setInput(e.target.value);
+            }}
+          ></textarea>
+        </div>
+        <div className="border rounded-lg p-4 bg-white">
+          <h2 className="text-4xl font-bold mb-2">Output:</h2>
+          <p>{output}</p>
+        </div>
       </div>
-      <div className="flex space-x-4 mb-4">
-       
-      </div>
-      <div className="border rounded-lg p-4 bg-white">
-        <h2 className="text-4xl font-bold mb-2">Output:</h2>
-        <p>{output}</p>
-      </div>
+    </div>
 
-      {/* Error Modal */}
       {isErrorModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
           <div className="bg-white rounded-lg p-6 max-w-sm mx-4">
@@ -119,6 +138,11 @@ const IDE = () => {
           </div>
         </div>
       )}
+
+
+      {isLoading && (<div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+      <Spinner />
+    </div>)}
     </div>
   );
 };
