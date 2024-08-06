@@ -7,6 +7,10 @@ const Problems = () => {
   const [error, setError] = useState('');
   const navigate = useNavigate(); 
   useEffect(() => {
+    if (!localStorage.getItem('firstVisit')) {
+      localStorage.setItem('firstVisit', 'true');
+      window.location.reload();
+    }
     const fetchProblems = async () => {
       try {
         const response = await axios.get('https://codeplex.onrender.com/api/problems'); 
