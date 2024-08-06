@@ -5,7 +5,7 @@ import { Base64 } from 'js-base64';
 import { Spinner } from '../component/Loader';
 
 const IDE = () => {
-  const [code, setCode] = useState(`#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`);
+  const [code, setCode] = useState(`#include <bits/stdc++.h>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`);
   const [output, setOutput] = useState("");
   const [input, setInput] = useState("");
   const [language, setLanguage] = useState("cpp");
