@@ -15,7 +15,7 @@ const IDE = () => {
 
 
   const boilerplateCodes = {
-    cpp: `#include <iostream>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`,
+    cpp: `#include <bits/stdc++.h>\nusing namespace std;\n\nint main() { \n  cout<<"Hello";\n}`,
     c: `#include <stdio.h>\n\nint main() { \n  printf("Hello");\n  return 0;\n}`,
     python: `print("Hello")`,
     java: `public class Main {\n  public static void main(String[] args) {\n    System.out.println("Hello");\n  }\n}`,
