@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const name = "<>codeplex"
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -28,10 +29,10 @@ const Navbar = () => {
   return (
     <nav className='flex h-[50px] fixed w-full top-0 items-center border-b-2 border-solid bg-white z-50'>
       <div className='flex justify-between items-center w-full max-w-[1200px] mx-auto px-6'>
-        <ul className='flex items-center gap-6 p-0'>
+        <ul className='flex items-center gap-1 p-0'>
           <li>
             <Link to='/' className='hover:underline underline-offset-2 text-black mx-5'>
-              CodePlex
+              {name}
             </Link>
           </li>
           <li className='relative' ref={dropdownRef}>
