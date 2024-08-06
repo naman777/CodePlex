@@ -43,6 +43,7 @@ const IDE = () => {
       if (response.data.error === "Something went wrong or Compilation Error") {
         setError(response.data.error);
         setIsErrorModalOpen(true);
+        setIsLoading(false);
         setOutput("");
         return;
       }
