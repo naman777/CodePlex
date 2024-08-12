@@ -27,7 +27,8 @@ const Navbar = () => {
   }, []);
 
   return (
-    <nav className='flex h-[50px] fixed w-full top-0 items-center border-b-2 border-solid bg-white z-50'>
+    
+    <nav className='flex h-[50px] fixed w-full top-0 items-center border-b-2 border-solid bg-white  z-50'>
       <div className='flex justify-between items-center w-full max-w-[1200px] mx-auto px-6'>
         <ul className='flex items-center gap-1 p-0'>
           <li>
@@ -41,7 +42,7 @@ const Navbar = () => {
               aria-haspopup="true"
               aria-expanded={isOpen}
               className='hover:underline underline-offset-2 text-black'
-            >
+              >
               Interview
             </button>
             {isOpen && (
@@ -49,13 +50,13 @@ const Navbar = () => {
                 <Link
                   to='/online'
                   className='block px-4 py-2 hover:bg-gray-200'
-                >
+                  >
                   Online Interview
                 </Link>
                 <Link
                   to='/assessment'
                   className='block px-4 py-2 hover:bg-gray-200'
-                >
+                  >
                   Assessment
                 </Link>
               </div>
@@ -87,6 +88,7 @@ const Navbar = () => {
         </div>
       </div>
     </nav>
+            
   );
 }
 

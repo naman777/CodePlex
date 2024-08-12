@@ -76,7 +76,7 @@ const IDE = () => {
   };
 
   return (
-    <div className="container mx-auto px-5 py-4 bg-slate-900 h-screen">
+    <div className="container mx-auto px-5 py-4  h-screen">
       <div className="mb-4">
         <select
           className="border rounded-lg px-4  py-2 "

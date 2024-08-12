@@ -38,7 +38,7 @@ const SolveProblem = () => {
   
   return (
     <div className="flex h-screen text-white" >
-      <div className="w-[50%] h-full bg-slate- text-white p-6">
+      <div className="w-[50%] h-full text-white p-6">
         <div className="text-4xl mb-4">
           {problem.id}{". "}<span className="font-bold">{problem.title}</span>
         </div>
@@ -54,7 +54,7 @@ const SolveProblem = () => {
           <p>{problem.sampleTestCaseAns}</p>
         </div>
       </div>
-      <div className="w-[50%] h-full bg-gray-800 text-white p-6">
+      <div className="w-[50%] h-full  text-white p-6">
         <div className="flex items-center text-2xl mb-4 mx-5">
           <Code className="mr-2" /> Code
           <select
